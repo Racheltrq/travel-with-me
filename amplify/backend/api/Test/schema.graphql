@@ -1,0 +1,14 @@
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  Orders: [Agent] @manyToMany(relationName: "UserAgent")
+}
+
+type Agent @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  gender: String
+  locations: [String]!
+  Orders: [User] @manyToMany(relationName: "UserAgent")
+}
+ 
