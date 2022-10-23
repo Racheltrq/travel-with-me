@@ -1,7 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import { AmplifyProvider } from '@aws-amplify/ui-react'
-import { studioTheme } from './ui-components'
 import { Amplify } from 'aws-amplify'
 import config from './aws-exports'
 import '@aws-amplify/ui-react/styles.css'
@@ -10,7 +8,6 @@ Amplify.configure(config)
 
 function App() {
   return (
-    <AmplifyProvider theme={studioTheme}>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -29,7 +26,6 @@ function App() {
       </header>
 
     </div>
-  </AmplifyProvider>);
-}
+)}
 
 export default App;

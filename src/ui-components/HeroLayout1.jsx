@@ -14,6 +14,8 @@ import {
 } from "@aws-amplify/ui-react/internal";
 import { User, Agent } from "../models";
 import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
+import travelLogo from "../static/travelLogo.jpg"
+
 export default function HeroLayout1(props) {
   const { overrides: overridesProp, ...rest } = props;
   const variants = [
@@ -27,7 +29,7 @@ export default function HeroLayout1(props) {
         Button: {},
         HeroMessage: {},
         Left: {},
-        image: { src: "https://travel-with-me-public.s3.amazonaws.com/travel-desire-woman-coastline.jpg"},
+        image: { src: { travelLogo }},
         Right: {},
         HeroLayout1: {},
       },
@@ -45,8 +47,7 @@ export default function HeroLayout1(props) {
         Button: {},
         HeroMessage: {},
         Left: { backgroundColor: "rgba(0,0,0,1)" },
-        image: { alignSelf: "stretch", objectFit: "cover", src: "https://www.google.com/search?q=travel+image&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi_g4640vT6AhXTEVkFHYpAA5EQ_AUoAXoECAIQAw&biw=1920&bih=901&dpr=1#imgrc=5JLly8gu_no2DM" },
-        Right: {},
+        image: { alignSelf: "stretch", objectFit: "cover", src: { travelLogo }},
         HeroLayout1: {},
       },
       variantValues: { mode: "Dark" },
@@ -61,7 +62,7 @@ export default function HeroLayout1(props) {
   return (
     <Flex
       gap="0"
-      width="1440px"
+      width="1700px"
       height="500px"
       justifyContent="center"
       alignItems="center"
@@ -115,8 +116,8 @@ export default function HeroLayout1(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="TravelWithMe"
-            {...getOverrideProps(overrides, "TravelWithMe")}
+            children="Travel With Me"
+            {...getOverrideProps(overrides, "Travel With Me")}
           ></Text>
           <Flex
             gap="16px"
@@ -147,10 +148,10 @@ export default function HeroLayout1(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children="The place for your to connect  tourguide"
+              children="The place for your to connect with your tour guide"
               {...getOverrideProps(
                 overrides,
-                "The place for your to connect tourguide"
+                "The place for your to connect with your tour guide"
               )}
             ></Text>
             <Text
@@ -211,7 +212,7 @@ export default function HeroLayout1(props) {
         {...getOverrideProps(overrides, "Right")}
       >
         <Image
-          src = "https://www.google.com/search?q=travel+image&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi_g4640vT6AhXTEVkFHYpAA5EQ_AUoAXoECAIQAw&biw=1920&bih=901&dpr=1#imgrc=5JLly8gu_no2DM"
+          src = {travelLogo}
           width="720px"
           height="500px"
           grow="1"

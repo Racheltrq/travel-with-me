@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { AmplifyProvider } from '@aws-amplify/ui-react'
+import { studioTheme } from './ui-components'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -15,6 +17,7 @@ import {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <AmplifyProvider theme={studioTheme}>
     <BrowserRouter>
       <div>
         <Routes>
@@ -23,7 +26,7 @@ root.render(
         </Routes>
       </div>
     </BrowserRouter>
-    
+    </AmplifyProvider>
   </React.StrictMode>
 );
 
