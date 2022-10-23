@@ -4,11 +4,26 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HeroLayout1 } from './ui-components';
+import {
+  BrowserRouter,
+  Route,
+  Routes
+  //Switch,
+  //Link
+} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HeroLayout1 />
+    <BrowserRouter>
+      <div>
+        <Routes>
+          <Route exact path="/" element={<HeroLayout1 />}/>
+          <Route path="/feed" element={<App />}/>
+        </Routes>
+      </div>
+    </BrowserRouter>
+    
   </React.StrictMode>
 );
 

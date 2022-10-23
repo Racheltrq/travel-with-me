@@ -6,8 +6,13 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { Agent, Image, UserAgent } from "../models";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type HeroLayout1Props = React.PropsWithChildren<Partial<FlexProps> & {
+    image?: Image;
+    userAgent?: UserAgent;
+    agent?: Agent;
+} & {
     mode?: "Dark" | "Light";
 } & {
     overrides?: EscapeHatchProps | undefined | null;

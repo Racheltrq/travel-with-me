@@ -16,6 +16,9 @@ export declare class User {
   readonly id: string;
   readonly name?: string | null;
   readonly Orders?: (UserAgent | null)[] | null;
+  readonly username?: string | null;
+  readonly password?: string | null;
+  readonly date_of_creation?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<User, UserMetaData>);
@@ -28,6 +31,11 @@ export declare class Agent {
   readonly gender?: string | null;
   readonly locations: (string | null)[];
   readonly Orders?: (UserAgent | null)[] | null;
+  readonly price?: number | null;
+  readonly Head_Image?: string | null;
+  readonly username?: string | null;
+  readonly password?: string | null;
+  readonly date_of_creation?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Agent, AgentMetaData>);

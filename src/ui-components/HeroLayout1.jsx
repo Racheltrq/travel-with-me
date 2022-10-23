@@ -10,22 +10,24 @@ import {
   getOverrideProps,
   getOverridesFromVariants,
   mergeVariantsAndOverrides,
+  useNavigateAction,
 } from "@aws-amplify/ui-react/internal";
+import { User, Agent } from "../models";
 import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
 export default function HeroLayout1(props) {
   const { overrides: overridesProp, ...rest } = props;
   const variants = [
     {
       overrides: {
-        "LOREM IPSUM": {},
-        "Ut enim ad minim veniam quis nostrud": {},
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.":
+        TravelWithMe: {},
+        "The place for your to connect tourguide": {},
+        "There\u2019s no better way to feel the heartbeat of a city than discovering it with a knowledgeable local by your side who has similar interests to yours. Whether travelers want the focus of your visit to be on art, food, nightlife, sightseeing, or culture, they can customize a city tour with a Travel with Me local whatever their next destination.":
           {},
         Message: {},
         Button: {},
         HeroMessage: {},
         Left: {},
-        image: {},
+        image: { src: "https://travel-with-me-public.s3.amazonaws.com/travel-desire-woman-coastline.jpg"},
         Right: {},
         HeroLayout1: {},
       },
@@ -33,17 +35,17 @@ export default function HeroLayout1(props) {
     },
     {
       overrides: {
-        "LOREM IPSUM": { color: "rgba(255,255,255,1)" },
-        "Ut enim ad minim veniam quis nostrud": {
+        TravelWithMe: { color: "rgba(255,255,255,1)" },
+        "The place for your to connect tourguide": {
           color: "rgba(255,255,255,1)",
         },
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.":
+        "There\u2019s no better way to feel the heartbeat of a city than discovering it with a knowledgeable local by your side who has similar interests to yours. Whether travelers want the focus of your visit to be on art, food, nightlife, sightseeing, or culture, they can customize a city tour with a Travel with Me local whatever their next destination.":
           { color: "rgba(255,255,255,1)" },
         Message: {},
         Button: {},
         HeroMessage: {},
         Left: { backgroundColor: "rgba(0,0,0,1)" },
-        image: { alignSelf: "stretch", objectFit: "cover" },
+        image: { alignSelf: "stretch", objectFit: "cover", src: "https://www.google.com/search?q=travel+image&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi_g4640vT6AhXTEVkFHYpAA5EQ_AUoAXoECAIQAw&biw=1920&bih=901&dpr=1#imgrc=5JLly8gu_no2DM" },
         Right: {},
         HeroLayout1: {},
       },
@@ -54,6 +56,8 @@ export default function HeroLayout1(props) {
     getOverridesFromVariants(variants, props),
     overridesProp || {}
   );
+  const buttonOnClick = useNavigateAction({ type: "url", url: "feed" });
+  const imageOnClick = useNavigateAction({ type: "url", url: "" });
   return (
     <Flex
       gap="0"
@@ -97,10 +101,10 @@ export default function HeroLayout1(props) {
         >
           <Text
             fontFamily="Inter"
-            fontSize="16px"
+            fontSize="40px"
             fontWeight="700"
             color="rgba(13,26,38,1)"
-            lineHeight="24px"
+            lineHeight="48px"
             textAlign="center"
             display="flex"
             direction="column"
@@ -111,8 +115,8 @@ export default function HeroLayout1(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="LOREM IPSUM"
-            {...getOverrideProps(overrides, "LOREM IPSUM")}
+            children="TravelWithMe"
+            {...getOverrideProps(overrides, "TravelWithMe")}
           ></Text>
           <Flex
             gap="16px"
@@ -143,10 +147,10 @@ export default function HeroLayout1(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children="Ut enim ad minim veniam quis nostrud"
+              children="The place for your to connect  tourguide"
               {...getOverrideProps(
                 overrides,
-                "Ut enim ad minim veniam quis nostrud"
+                "The place for your to connect tourguide"
               )}
             ></Text>
             <Text
@@ -155,7 +159,7 @@ export default function HeroLayout1(props) {
               fontWeight="400"
               color="rgba(13,26,38,1)"
               lineHeight="24px"
-              textAlign="center"
+              textAlign="justify"
               display="flex"
               direction="column"
               justifyContent="flex-start"
@@ -166,10 +170,10 @@ export default function HeroLayout1(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+              children="There’s no better way to feel the heartbeat of a city than discovering it with a knowledgeable local by your side who has similar interests to yours. Whether travelers want the focus of your visit to be on art, food, nightlife, sightseeing, or culture, they can customize a city tour with a Travel with Me local whatever their next destination."
               {...getOverrideProps(
                 overrides,
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+                "There\u2019s no better way to feel the heartbeat of a city than discovering it with a knowledgeable local by your side who has similar interests to yours. Whether travelers want the focus of your visit to be on art, food, nightlife, sightseeing, or culture, they can customize a city tour with a Travel with Me local whatever their next destination."
               )}
             ></Text>
           </Flex>
@@ -184,7 +188,10 @@ export default function HeroLayout1(props) {
             size="large"
             isDisabled={false}
             variation="primary"
-            children="Primary Button"
+            children="Start to Search"
+            onClick={() => {
+              buttonOnClick();
+            }}
             {...getOverrideProps(overrides, "Button")}
           ></Button>
         </Flex>
@@ -204,12 +211,16 @@ export default function HeroLayout1(props) {
         {...getOverrideProps(overrides, "Right")}
       >
         <Image
+          src = "https://www.google.com/search?q=travel+image&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi_g4640vT6AhXTEVkFHYpAA5EQ_AUoAXoECAIQAw&biw=1920&bih=901&dpr=1#imgrc=5JLly8gu_no2DM"
           width="720px"
           height="500px"
           grow="1"
           position="relative"
           padding="0px 0px 0px 0px"
           display="flex"
+          onClick={() => {
+            imageOnClick();
+          }}
           {...getOverrideProps(overrides, "image")}
         ></Image>
       </Flex>

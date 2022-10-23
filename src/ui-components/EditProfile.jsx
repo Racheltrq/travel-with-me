@@ -6,7 +6,10 @@
 
 /* eslint-disable */
 import React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
 import {
   Button,
   Divider,
@@ -18,7 +21,12 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 export default function EditProfile(props) {
-  const { overrides, ...rest } = props;
+  const { user, overrides, ...rest } = props;
+  const buttonOnClick = useNavigateAction({
+    target: "_blank",
+    type: "url",
+    url: user?.id,
+  });
   return (
     <Flex
       gap="16px"
@@ -233,6 +241,9 @@ export default function EditProfile(props) {
           isDisabled={false}
           variation="primary"
           children="Save"
+          onClick={() => {
+            buttonOnClick();
+          }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>

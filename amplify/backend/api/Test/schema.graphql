@@ -2,6 +2,9 @@ type User @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   Orders: [Agent] @manyToMany(relationName: "UserAgent")
+  username: String
+  password: String
+  date_of_creation: String
 }
 
 type Agent @model @auth(rules: [{allow: public}]) {
@@ -10,5 +13,10 @@ type Agent @model @auth(rules: [{allow: public}]) {
   gender: String
   locations: [String]!
   Orders: [User] @manyToMany(relationName: "UserAgent")
+  price: Int
+  Head_Image: AWSURL
+  username: String
+  password: String
+  date_of_creation: String
 }
  
