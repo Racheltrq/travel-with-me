@@ -13,14 +13,45 @@ paths:
     get:
       summary: search for a hotel.
       description: |
-        This API takes in a search query as a query parameter and returns a list of hotels.
+        This API takes in several queries as parameters and returns a list of hotels.
       operationId: searchHotels
       parameters:
         - in: query
-          name: q
+          name: adults_number
+          schema:
+            type: integer
+          description: adults number
+        - in: query
+          name: children_number
+          schema:
+            type: integer
+          description: children number
+        - in: query
+          name: children_age
           schema:
             type: string
-          description: the string to be searched
+          description: children age (String, comma separated.)
+        - in: query
+          name: room_number
+          schema:
+            type: integer
+          description: room number
+        - in: query
+          name: free_cancellation
+          schema:
+            type: integer
+          description: free cancellation (Pre-assigned, `'free_cancellation::1'` for free cancellation.)
+        - in: query
+          name: checkin_date
+          schema:
+            type: string
+          description: checkin date
+        - in: query
+          name: checkout_date
+          schema:
+            type: string
+          description: checkout date
+          
       produces:
         - application/json
       responses:
@@ -36,80 +67,80 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-  /ml_rec:
-    get:
-      summary: give recommendations based on our ML model.
-      description: |
-        This API takes in `TBD` and returns a list of hotels after analysis using our model.
-      operationId: recHotels
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: ML-rec-ed hotel results
-          schema:
-            $ref: '#/definitions/SearchResponse'
-        '403':
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/Error'
-        '500':
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
-  /booking_info:
-    get:
-      summary: check booking information of a user.
-      description: |
-        This API takes in `user_id` and returns a list of booking information.
-      operationId: bookingInfo
-      parameters:
-        - in: query
-          name: user_id
-          schema:
-            type: string
-          description: id of an user that attemps to see booking information.
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: Booking information of this user
-          schema:
-            $ref: '#/definitions/SearchResponse'
-        '403':
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/Error'
-        '500':
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
-  /book:
-    post:
-      summary: endpoint for booking a hotel.
-      description: |
-        This API takes in requests of an user and returns booking status (successful or not).
-      operationId: bookAHotel
-      produces:
-        - application/json
-      parameters:
-        - name: body
-          in: body
-          schema:
-            $ref: '#/definitions/Book'
-      responses:
-        '200':
-          description: A Chatbot response
-          schema:
-            $ref: '#/definitions/BookResponse'
-        '403':
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/Error'
-        '500':
-          description: Unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+  # /ml_rec:
+  #   get:
+  #     summary: give recommendations based on our ML model.
+  #     description: |
+  #       This API takes in `TBD` and returns a list of hotels after analysis using our model.
+  #     operationId: recHotels
+  #     produces:
+  #       - application/json
+  #     responses:
+  #       '200':
+  #         description: ML-rec-ed hotel results
+  #         schema:
+  #           $ref: '#/definitions/SearchResponse'
+  #       '403':
+  #         description: Unauthorized
+  #         schema:
+  #           $ref: '#/definitions/Error'
+  #       '500':
+  #         description: Unexpected error
+  #         schema:
+  #           $ref: '#/definitions/Error'
+  # /booking_info:
+  #   get:
+  #     summary: check booking information of a user.
+  #     description: |
+  #       This API takes in `user_id` and returns a list of booking information.
+  #     operationId: bookingInfo
+  #     parameters:
+  #       - in: query
+  #         name: user_id
+  #         schema:
+  #           type: string
+  #         description: id of an user that attemps to see booking information.
+  #     produces:
+  #       - application/json
+  #     responses:
+  #       '200':
+  #         description: Booking information of this user
+  #         schema:
+  #           $ref: '#/definitions/SearchResponse'
+  #       '403':
+  #         description: Unauthorized
+  #         schema:
+  #           $ref: '#/definitions/Error'
+  #       '500':
+  #         description: Unexpected error
+  #         schema:
+  #           $ref: '#/definitions/Error'
+  # /book:
+  #   post:
+  #     summary: endpoint for booking a hotel.
+  #     description: |
+  #       This API takes in requests of an user and returns booking status (successful or not).
+  #     operationId: bookAHotel
+  #     produces:
+  #       - application/json
+  #     parameters:
+  #       - name: body
+  #         in: body
+  #         schema:
+  #           $ref: '#/definitions/Book'
+  #     responses:
+  #       '200':
+  #         description: A Chatbot response
+  #         schema:
+  #           $ref: '#/definitions/BookResponse'
+  #       '403':
+  #         description: Unauthorized
+  #         schema:
+  #           $ref: '#/definitions/Error'
+  #       '500':
+  #         description: Unexpected error
+  #         schema:
+  #           $ref: '#/definitions/Error'
 
 
 definitions:
