@@ -1,4 +1,5 @@
 Information about Lambda functions:
+
 0. user-cognito: Control users' signin/signup behaviors.
 1. search-hotel: Search for hotel with the info given by user.
 2. push-hotel-desc: Look up hotel descriptions on website, then push result to DynamoDB.
