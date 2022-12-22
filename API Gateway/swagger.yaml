@@ -1,0 +1,242 @@
+---
+swagger: "2.0"
+info:
+  description: "API used in Project TravelWithMe, Cloud Computing with Prof. Sambit\
+    \ Sahu, NYU Fall 2022."
+  version: "1.0.0"
+  title: "Travel With Me"
+host: "a91201uwt9.execute-api.us-east-1.amazonaws.com"
+basePath: "/dev"
+schemes:
+- "https"
+paths:
+  /book:
+    post:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "mbti_str"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "hotel_name"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "duration"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "hotel_city"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "user_name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SearchResponse"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SearchResponse"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /partner:
+    post:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "email_addr"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "confirmation_num"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "subject"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "body"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SearchResponse"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SearchResponse"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /rec:
+    post:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "hotel_name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SearchResponse"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SearchResponse"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /search:
+    get:
+      operationId: "searchHotels"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "checkout_date"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "free_cancellation"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "adults_number"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "checkin_date"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "children_number"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "children_age"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "room_number"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "location"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SearchResponse"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        "500":
+          description: "500 response"
+          schema:
+            $ref: "#/definitions/Error"
+        "403":
+          description: "403 response"
+          schema:
+            $ref: "#/definitions/Error"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/SearchResponse"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+definitions:
+  Error:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+  Hotel:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      address:
+        type: "string"
+      score:
+        type: "string"
+      pic_url:
+        type: "string"
+      price:
+        type: "string"
+  SearchResponse:
+    type: "object"
+    properties:
+      results:
+        type: "array"
+        items:
+          $ref: "#/definitions/Hotel"
